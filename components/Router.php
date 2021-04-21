@@ -25,21 +25,21 @@ Class Rouret
     //Проверяем наличие такого запроса в routes.php
     foreach ($this->routes as $uriPattern => $path)
         {
-        //Распарсили массив на юрл и метод
+    //Распарсили массив на юрл и метод
         if(preg_match("~$uriPattern~",$uri))
         {
-            echo '<br> Где ищем - запрос,который набрал пользователь: '. $uri;
-            echo '<br> Что ищем - Совпадение из правил: '. $uriPattern;
-            echo '<br> Кто обрабатывает: '. $path;
-            
+    // Получаем внутренний путь из внешнего согласно правилу
           $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
           
-            echo '<br> Что нужно сформировать: '. $internalRoute . '<br>';
-          $segments = explode ('/', $path);
+    // Опруделить контроллер,актион, параметры
+          $segments = explode ('/', $internalRoute);
+          
           $controllerName = array_shift($segments).'Controller';
           $controllerName = ucfirst($controllerName);
           
           $actionName = 'action'.ucfirst(array_shift($segments));
+          $parameters = $segments;
+         
           
          //Подключение файла класса-контроллера
          
@@ -50,7 +50,7 @@ Class Rouret
               include_once ($controllerFile);
           }
           $controllerObject = new $controllerName;
-          $result = $controllerObject->$actionName();
+          $result = call_user_func_array(array($controllerObject,$actionName), $parameters);
           if($result != null){              break;}
           
    }
