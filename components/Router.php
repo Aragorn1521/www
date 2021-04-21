@@ -28,6 +28,13 @@ Class Rouret
         //Распарсили массив на юрл и метод
         if(preg_match("~$uriPattern~",$uri))
         {
+            echo '<br> Где ищем - запрос,который набрал пользователь: '. $uri;
+            echo '<br> Что ищем - Совпадение из правил: '. $uriPattern;
+            echo '<br> Кто обрабатывает: '. $path;
+            
+          $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+          
+            echo '<br> Что нужно сформировать: '. $internalRoute . '<br>';
           $segments = explode ('/', $path);
           $controllerName = array_shift($segments).'Controller';
           $controllerName = ucfirst($controllerName);
@@ -44,7 +51,7 @@ Class Rouret
           }
           $controllerObject = new $controllerName;
           $result = $controllerObject->$actionName();
-         // if($result != null){              break;}
+          if($result != null){              break;}
           
    }
     }
