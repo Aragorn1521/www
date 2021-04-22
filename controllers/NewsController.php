@@ -21,6 +21,7 @@ Class NewsController
             echo '<pre>';
             print_r($newsItem);
              echo '<pre>';
+             return true;
         }
        
         
