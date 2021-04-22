@@ -8,9 +8,7 @@ Class NewsController
         $newsList = [];
         $newsList = News::getNewsList();
         
-        echo '<pre>';
-        print_r($newsList);
-        echo '<pre>';
+        require_once ROOT.'/views/news/index.php';
         return true;
     }
     

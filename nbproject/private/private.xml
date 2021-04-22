@@ -6,7 +6,11 @@
             <file>file:/Z:/home/one/www/models/News.php</file>
             <file>file:/Z:/home/one/www/config/routes.php</file>
             <file>file:/Z:/home/one/www/controllers/NewsController.php</file>
+            <file>file:/Z:/home/one/www/views/news/index.php</file>
             <file>file:/Z:/home/one/www/components/Router.php</file>
+            <file>file:/Z:/home/one/www/config/db_params.php</file>
+            <file>file:/Z:/home/one/www/components/Db.php</file>
+            <file>file:/Z:/home/one/www/.htaccess</file>
             <file>file:/Z:/home/one/www/index.php</file>
         </group>
     </open-files>
